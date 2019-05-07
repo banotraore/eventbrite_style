@@ -1,7 +1,4 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
-<p>Les 3 petits points seront remplaces par une image</p>
-
+<h1>This all the Events</h1>
 
 <!-- DEBUT CARD HEARDER -->
 <div class="row">
@@ -11,18 +8,20 @@
     <div class="card-deck mb-3 text-center">
 
       <div class="card card-accent-dark mb-3" style="max-width: 20rem;">
+       <%= image_tag("test.jpg", :alt => "rss feed") %>
+
         <div class="card-header">
-          <%= event.title %>
+          Topic : <%= event.title %>
         </div>
         <div class="card-body">
           <p>
-            Son admin : <%= event.admin.first_name %>
+            Organized by : ** <%= event.admin.first_name %>
             **<br/>
-            Le descriptif : <%= event.description %>
-            **<br/>
+            Description : <%= event.description %>
+            <br/>
           </p>
           <button type="button" class="btn btn-pill btn-secondary">
-            <a <%= link_to event.admin.first_name , user_path(event.admin.id)%></a>
+            <a <%= link_to event , event_path %></a>
           </button>
         </div>
       </div>
