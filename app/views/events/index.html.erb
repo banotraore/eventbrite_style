@@ -1,3 +1,22 @@
 <h1>Events#index</h1>
 <p>Find me in app/views/events/index.html.erb</p>
-<p>vide pour l'instant mais il y aura tous les events dans de belles cards bootstrap</p>
+<p>Les 3 petits points seront remplaces par une image</p>
+
+<!-- new CARD HEADER -->
+<div class="row">
+
+<% @event.each do | event| %>
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %></h5>
+        <p class="card-text">Son admin : <%= event.admin.first_name %></p>
+        <p class="card-text">Le descriptif : <%= event.description %></p>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+<!-- FIN new CARD HEADER -->
