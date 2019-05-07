@@ -23,7 +23,7 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Test Dropdown</a>
     <div class="dropdown-menu">
-      <% if !session[:user_id] %>
+      <% if user_signed_in? %>
       <a class="dropdown-item" href="#">Sign Up</a>
       <a class="dropdown-item" href="#">Sign in</a>
       <% else %>
