@@ -2,21 +2,33 @@
 <p>Find me in app/views/events/index.html.erb</p>
 <p>Les 3 petits points seront remplaces par une image</p>
 
-<!-- new CARD HEADER -->
+
+<!-- DEBUT CARD HEARDER -->
 <div class="row">
-
-<% @event.each do | event| %>
+  <% @event.each do | event| %>
   <div class="col-md-4">
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= event.title %></h5>
-        <p class="card-text">Son admin : <%= event.admin.first_name %></p>
-        <p class="card-text">Le descriptif : <%= event.description %></p>
 
+    <div class="card-deck mb-3 text-center">
+
+      <div class="card card-accent-dark mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+          <%= event.title %>
+        </div>
+        <div class="card-body">
+          <p>
+            Son admin : <%= event.admin.first_name %>
+            **<br/>
+            Le descriptif : <%= event.description %>
+            **<br/>
+          </p>
+          <button type="button" class="btn btn-pill btn-secondary">
+            <a <%= link_to event.admin.first_name , user_path(event.admin.id)%></a>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
+
 </div>
-<!-- FIN new CARD HEADER -->
+<!-- FIN CARD HEADER -->

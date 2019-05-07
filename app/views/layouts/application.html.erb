@@ -11,35 +11,35 @@
 
 
       <title>Eventbrite Ayuma et Bano</title>
+
       <!-- DEBUT NAVBAR -->
 
-      <ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class=“nav-link active” <%= link_to  "Home",  root_path %></a>
-  </li>
-  <li class="nav-item">
-    <a class=“nav-link active” <%= link_to  "Create Event",  new_events_index_path %></a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Test Dropdown</a>
-    <div class="dropdown-menu">
-      <% if user_signed_in? %>
-      <a class="dropdown-item" href="#">My account</a>
-      <a class=“dropdown-item” <%= link_to  "My account",  destroy_user_session_path , method: :delete%></a>
+            <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class=“nav-link <%= link_to  "Home",  root_path %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"<%= link_to "Create Event", new_event_path %> </a>
+        </li>
 
-      <a class="dropdown-item" href="#">Log out</a>
-      <a class=“dropdown-item” <%= link_to  "Log out 1",  destroy_user_session_path , method: :delete%></a>
-      <% else %>
-  
-      <a class=“dropdown-item” <%= link_to  "Sign in",  new_user_session_path %></a>
-      <a class=“dropdown-item” <%= link_to  "Sign Up 2",  new_user_registration_path %></a>
-      <% end %>
+            <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My profile / Log out</a>
+          <div class="dropdown-menu">
+             <a class="dropdown-item" <%= link_to "My profile", user_path(current_user) %></a>
+           <a class="nav-link" <%= link_to "Log out", destroy_user_session_path, method: :delete %></a>
 
-  </li>
+            <% else %>
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign up / Sign in</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" <%= link_to "Sign Up", new_user_registration_path %></a>
+            <a class="dropdown-item" <%= link_to "Sign In", new_user_session_path %></a>
+            <% end %>
+        </li>
 
-</ul>
-      <!-- FIN NAVBAR -->
-
+      </ul>
+            <!-- FIN NAVBAR -->
 
   </head>
 
