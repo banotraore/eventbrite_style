@@ -11,6 +11,30 @@
 
 
       <title>Eventbrite Ayuma et Bano</title>
+      <!-- DEBUT NAVBAR -->
+
+      <ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Create Event</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Test Dropdown</a>
+    <div class="dropdown-menu">
+      <% if !session[:user_id] %>
+      <a class="dropdown-item" href="#">Sign Up</a>
+      <a class="dropdown-item" href="#">Sign in</a>
+      <% else %>
+      <a class="dropdown-item" href="#">My account</a>
+      <a class="dropdown-item" href="#">Log oute</a>
+      <% end %>
+
+  </li>
+
+</ul>
+      <!-- FIN NAVBAR -->
 
 
   </head>
