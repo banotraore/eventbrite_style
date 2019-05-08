@@ -41,7 +41,6 @@ end
 Attendance.destroy_all
 7.times do
   Attendance.create(
-    stripe_customer_id: Faker::IDNumber.south_african_id_number,
     user_id: User.all.sample.id,
     event_id: Event.all.sample.id,
   )
