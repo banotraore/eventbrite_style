@@ -10,7 +10,15 @@ class EventsController < ApplicationController
    def new
    end
    def create
-     @event = Event.new(title:params[:title],description:params[:description],duration:params[:duration],start_date:Time.now + 1,price:params[:price],location:params[:location],admin_id:current_user.id)
+     @event = Event.new(
+       title:params[:title],
+       description:params[:description],
+       duration:params[:duration].to_i,
+       start_date:params[:start_date],
+       price:params[:price].to_i,
+       location:params[:location],
+       admin_id:current_user.id
+     )
      if @event.save
        flash[:success] = "Event added !"
        redirect_to :root

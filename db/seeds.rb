@@ -9,7 +9,7 @@
 
 # Purge the user table before create 10 users to fill it
 User.destroy_all
-num = 1
+num = 20
 10.times do
   fake_password = Faker::Lorem.characters(10)
   User.create(
@@ -23,8 +23,7 @@ num = 1
 end
 
 #Pour ne choisir au hasard 1 admin que parmis les users creer
-first_user_id = User.first.id
-last_user_id = User.last.id
+
 Event.destroy_all
 3.times do
   date_parse = (Faker::Time.between(Date.today, 1.year.from_now)).strftime "%Y-%m-%d %H:%M:%S"
@@ -35,7 +34,7 @@ Event.destroy_all
     description: Faker::TvShows::Community.quotes,
     price: rand(1..100),
     location: Faker::Address.city,
-    admin: User.find(rand(first_user_id..last_user_id))
+    admin: User.all.sample
   )
 end
 
