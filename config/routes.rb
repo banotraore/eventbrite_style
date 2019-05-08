@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root 'events#index'
   get 'static_pages/index'
   get 'static_pages/secret'
