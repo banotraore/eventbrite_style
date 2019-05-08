@@ -10,14 +10,18 @@ class EventsController < ApplicationController
    def new
    end
    def create
+
      @event = Event.new(
-       title:params[:title],
+
+
+      title:params[:title],
        description:params[:description],
        duration:params[:duration].to_i,
-       start_date:params[:start_date],
+       start_date:Time.new(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,
+       params[:start_date][:hours].to_i,params[:start_date][:minutes].to_i),
        price:params[:price].to_i,
        location:params[:location],
-       admin_id:current_user.id
+       admin:current_user
      )
      if @event.save
        flash[:success] = "Event added !"
@@ -27,6 +31,8 @@ class EventsController < ApplicationController
        render :new
      end
    end
+
+
 
 
    private
