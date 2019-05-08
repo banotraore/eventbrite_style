@@ -9,12 +9,12 @@
 
 # Purge the user table before create 10 users to fill it
 User.destroy_all
-num = 20
+num = 1
 10.times do
   fake_password = Faker::Lorem.characters(10)
   User.create(
     email:"test_thp_bt#{num}@yopmail.com",
-    encrypted_password: fake_password,
+    password: fake_password,
     description: Faker::TvShows::GameOfThrones.quote,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
@@ -34,13 +34,14 @@ Event.destroy_all
     description: Faker::TvShows::Community.quotes,
     price: rand(1..100),
     location: Faker::Address.city,
-    admin: User.all.sample
+    admin_id: User.all.sample.id
   )
 end
 
 Attendance.destroy_all
 7.times do
   Attendance.create(
+    stripe_customer_id: Faker::IDNumber.south_african_id_number,
     user_id: User.all.sample.id,
     event_id: Event.all.sample.id,
   )

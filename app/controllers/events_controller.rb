@@ -4,10 +4,11 @@ class EventsController < ApplicationController
      @event = Event.all
    end
    def show
-     @event = Event.find(params[:id])
+     @event = Event.find_by(id: params[:id])
      @event_end = @event.start_date + (@event.duration*60)
    end
    def new
+     @event = Event.new
    end
    def create
 
@@ -17,8 +18,7 @@ class EventsController < ApplicationController
       title:params[:title],
        description:params[:description],
        duration:params[:duration].to_i,
-       start_date:Time.new(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,
-       params[:start_date][:hours].to_i,params[:start_date][:minutes].to_i),
+       start_date:params[:start_date],
        price:params[:price].to_i,
        location:params[:location],
        admin:current_user
