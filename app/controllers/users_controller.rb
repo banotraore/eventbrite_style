@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :is_my_profile, only: [:show,:edit]
   def show
     @user = User.find_by(id: params[:id])
+    @event = Event.all
   end
 
 

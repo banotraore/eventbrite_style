@@ -10,7 +10,7 @@
 # Purge the user table before create 10 users to fill it
 User.destroy_all
 num = 1
-10.times do
+20.times do
   fake_password = Faker::Lorem.characters(10)
   User.create(
     email:"test_thp_bt#{num}@yopmail.com",
@@ -25,7 +25,7 @@ end
 #Pour ne choisir au hasard 1 admin que parmis les users creer
 
 Event.destroy_all
-3.times do
+10.times do
   date_parse = (Faker::Time.between(Date.today, 1.year.from_now)).strftime "%Y-%m-%d %H:%M:%S"
   Event.create(
     start_date: date_parse,
@@ -39,7 +39,7 @@ Event.destroy_all
 end
 
 Attendance.destroy_all
-7.times do
+15.times do
   Attendance.create(
     stripe_customer_id: Faker::IDNumber.south_african_id_number,
     user_id: User.all.sample.id,

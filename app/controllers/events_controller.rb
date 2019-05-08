@@ -4,7 +4,7 @@ class EventsController < ApplicationController
      @event = Event.all
    end
    def show
-     @event = Event.find_by(id: params[:id])
+     @event = Event.find(params[:id])
      @event_end = @event.start_date + (@event.duration*60)
    end
    def new
