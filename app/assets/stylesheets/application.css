@@ -19,3 +19,8 @@
  }
 
 body { padding-top: 70px; }
+
+.test_color_event_info {
+  font-weight: bold;
+  color: red;
+}

@@ -1,19 +1,17 @@
 class EventsController < ApplicationController
   before_action :authenticate_user, only: [:create, :new]
    def index
-     @event = Event.all
+     @events = Event.all
    end
    def show
      @event = Event.find(params[:id])
-     @event_end = @event.start_date + (@event.duration*60)
    end
    def new
      @event = Event.new
    end
-   def create
-    @event = current_user.events.build(params[:event])
-     @event = Event.new(
 
+   def create
+     @event = Event.new(
 
       title:params[:title],
        description:params[:description],
@@ -34,9 +32,6 @@ class EventsController < ApplicationController
        render :new
      end
    end
-
-
-
 
    private
 
