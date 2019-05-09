@@ -6,6 +6,29 @@ class UsersController < ApplicationController
     @event = Event.all
   end
 
+  def index
+    @user = User.all
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(
+      description: params[:description],
+      first_name: params[:first_name],
+      last_name: params[:last_name]
+      )
+      flash[:update_success] = " Le profil a bien été mis à jour !"
+      redirect_to @user
+    else
+      flash[:update_warning] = " Le profil n'a pas pu être mis à jour !"
+      redirect_to @user
+    end
+
+  end
 
   private
 
