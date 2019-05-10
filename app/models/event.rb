@@ -26,7 +26,7 @@ class Event < ApplicationRecord
 
   # To check if the duration is correct
 	def is_start_date_correct?
-		if start_date < Time.now+30.minutes || start_date > Date.today+5.years
+		if start_date <  Date.today || start_date > Date.today+5.years
 			errors.add(:start_date, " must be between the next 30 minutes : #{(Time.now+30.minutes).strftime "%H:%M"} and before : #{Date.today+5.years}")
 		end
 	end

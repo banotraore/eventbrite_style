@@ -20,7 +20,7 @@
 
 body { padding-top: 70px; }
 
-.test_color_event_info {
+.variable_attribute_header {
   font-weight: bold;
   color: red;
 }

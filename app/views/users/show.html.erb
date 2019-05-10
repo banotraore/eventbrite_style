@@ -4,7 +4,9 @@
 <div class="card text-center" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><i class="far fa-address-card"></i></h5>
-    <p>test descriptionen bas</p>
+    <div class="variable_attribute_header">
+			<p>First name</p>
+		</div>
     <p class="card-text"> <%= @user.first_name %></p>
   </div>
 </div>
@@ -12,6 +14,9 @@
 <div class="card text-center" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><i class="fas fa-file-signature"></i></h5>
+    <div class="variable_attribute_header">
+			<p>Last name</p>
+		</div>
     <p class="card-text"> <%= @user.last_name %></p>
   </div>
 </div>
@@ -19,6 +24,9 @@
 <div class="card text-center" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><i class="fas fa-at"></i></h5>
+    <div class="variable_attribute_header">
+			<p>Email</p>
+		</div>
     <p class="card-text"><%= @user.email %></p>
   </div>
 </div>

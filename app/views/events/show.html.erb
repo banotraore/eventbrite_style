@@ -1,92 +1,121 @@
-<div class="jumbotron bg-secondary">
-	<div class="mx-auto" style="width: 400px;">
-		<h1>Event <%= @event.title %></h1>
-		<h2>host by : <%= @event.admin.first_name %></h2>
+<div class="container">
+	<div class="jumbotron bg-secondary">
+		<div class="mx-auto" style="width: 400px;">
+			<h1>Event
+				<%= @event.title %></h1>
+			<h2>host by :
+				<%= @event.admin.first_name %></h2>
 
+		</div>
 	</div>
-</div>
 
+	<div class="container text-center">
+		<div class="row border border-dark rounded">
+			<div class="card w-100">
+				<div class="card-body">
+					<h5 class="card-title">Description</h5>
+					<p class="card-text"><%= @event.description %></p>
+				</div>
 
-<div class="container text-center">
-<div class="row border border-dark rounded" >
-	<div class="card w-100">
-  		<div class="card-body">
-    	<h5 class="card-title">Description</h5>
-    <p class="card-text"><%= @event.description %></p>
-  </div>
-
-</div>
-</div>
-</div>
-
-<div class="card-group">
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><i class="far fa-calendar-alt"></i></h5>
-		<div class="test_color_event_info">
-			<p>Start date</p>
+			</div>
 		</div>
-    <p class="card-text"><%= @event.start_date.strftime "%Y-%m-%d %H:%M" %></p>
-  </div>
-</div>
+	</div>
 
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><i class="fas fa-calendar-alt"></i></h5>
-		<div class="test_color_event_info">
-			<p>End date</p>
+	<div class="card-group">
+		<div class="card text-center" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="far fa-calendar-alt"></i>
+				</h5>
+				<div class="test_color_event_info">
+					<p>Start date</p>
+				</div>
+				<p class="card-text"><%= @event.start_date.strftime "%Y-%m-%d %H:%M" %></p>
+			</div>
 		</div>
-    <p class="card-text"><%= @event.end_date.strftime "%Y-%m-%d %H:%M" %></p>
-  </div>
-</div>
 
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><i class="fas fa-map-marker-alt"></i></h5>
-		<div class="test_color_event_info">
-			<p>Location</p>
+		<div class="card text-center" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="fas fa-calendar-alt"></i>
+				</h5>
+				<div class="test_color_event_info">
+					<p>End date</p>
+				</div>
+				<p class="card-text"><%= @event.end_date.strftime "%Y-%m-%d %H:%M" %></p>
+			</div>
 		</div>
-    <p class="card-text"><%= @event.location %></p>
-  </div>
-</div>
-</div>
 
-<div class="card-group">
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><i class="fas fa-coins"></i></h5>
-		<div class="test_color_event_info">
-			<p>Price</p>
+		<div class="card text-center" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="fas fa-map-marker-alt"></i>
+				</h5>
+				<div class="test_color_event_info">
+					<p>Location</p>
+				</div>
+				<p class="card-text"><%= @event.location %></p>
+			</div>
 		</div>
-		<% if @event.price == 0 %>
-    <p class="card-text">Gratuit</p>
-		<% else %>
-		<p class="card-text"><%= @event.price %> €</p>
+	</div>
+
+	<div class="card-group">
+		<div class="card text-center" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="fas fa-coins"></i>
+				</h5>
+				<div class="test_color_event_info">
+					<p>Price</p>
+				</div>
+				<% if @event.price == 0 %>
+					<p class="card-text">Gratuit</p>
+				<% else %>
+					<p class="card-text"><%= @event.price %>
+						€</p>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="card text-center" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="fas fa-users"></i>
+				</h5>
+				<div class="test_color_event_info">
+					<p>Participants</p>
+				</div>
+				<% if @event.attendances.count == 0 %>
+					<a href="https://www.youtube.com/watch?v=FMar1ifzdmk" target="_blank">Nobody</a>
+				<% else %>
+					<p class="card-text"><%= @event.attendances.count %></p>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="card text-center" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="fas fa-user-tie"></i>
+				</h5>
+				<div class="test_color_event_info">
+					<p>Host email</p>
+				</div>
+				<p class="card-text"><%= @event.admin.email %></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="test_show_attendances">
+		<% @event.attendances.each do | event| %>
+			<ul class="list-group">
+				<li class="list-group-item disabled"><%= event.user.first_name%></li>
+				<li class="list-group-item"><%= event.user.email%></li>
+
+			</ul>
+
 		<% end %>
-  </div>
-</div>
+		<br>
 
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><i class="fas fa-users"></i></i></h5>
-		<div class="test_color_event_info">
-			<p>Participants</p>
-		</div>
-		<% if @event.attendances.count == 0 %>
-		<a href="https://www.youtube.com/watch?v=FMar1ifzdmk" target="_blank">Nobody</a>
-		<% else %>
-		<p class="card-text"><%= @event.attendances.count %></p>
-		<% end %>
-  </div>
-</div>
-
-<div class="card text-center" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><i class="fas fa-user-tie"></i></h5>
-		<div class="test_color_event_info">
-			<p>Host email</p>
-		</div>
-    <p class="card-text"><%= @event.admin.email %></p>
-  </div>
-</div>
+	</div
 </div>

@@ -32,7 +32,7 @@
     <br>
     <br>
     <div class="col-sm-6">
-        <%= text_area_tag 'description', "", class: "form-control", placeholder: "Description"%>
+        <%= text_area_tag 'description', "",  class: "form-control", placeholder: "Description, minimum is 20 characters"%>
     </div>
     <br>
     <div class="col-sm-6">
@@ -53,7 +53,7 @@
     <br>
     <br>
     <div class="col-sm-6">
-        <%= text_area_tag 'location', "", class: "form-control", placeholder: "Location"%>
+        <%= text_area_tag 'location',"", class: "form-control", placeholder: "Location"%>
     </div>
     <br>
     <br>
@@ -61,4 +61,12 @@
     <% end %>
     </div>
 
+</div>
+
+
+<div class="test_param_event">
+  <br>
+  <%= @event.start_date %>
+  <p>test</p>
+  <br>
 </div>
