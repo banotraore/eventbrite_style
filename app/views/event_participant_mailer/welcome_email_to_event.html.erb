@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @participant.first_name %> tu es bien iscrit  !</h1>
+    <p>
+      Tu t'es inscrit sur monsite.fr en utilisant l'e-mail suivant : <%= @participant.email %>.
+    </p>
+    <p>
+      Ta participation à l'event : <%= @event.title %>event est confirmee.
+      L'Event est prevu le : <%= @event.start_date %> .
+      Il dure : <%= @event.start_date %> min.
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur monsite.fr !
+  </body>
+</html>

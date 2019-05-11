@@ -1,14 +1,13 @@
-class AttendanceMailer < ApplicationMailer
-  default from: 'no-reply@monsite.fr'
+class EventParticipantMailer < ApplicationMailer
 
-  def new_participation_email(attendance)
+  def welcome_email_to_event(attendance)
     @attendance = attendance
     @event = @attendance.event
     @admin = @attendance.event.admin
     @participant = @attendance.user
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @admin.email, subject: "1 nouvelle personne s'est inscrite à l'évènement !")
+    mail(to: @participant.email, subject: "Tom inscription a l'event #{@event.id} est bien confirmée")
   end
 
 end

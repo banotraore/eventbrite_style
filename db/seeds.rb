@@ -10,7 +10,7 @@
 # Purge the user table before create 10 users to fill it
 User.destroy_all
 num = 1
-20.times do
+10.times do
   fake_password = Faker::Lorem.characters(10)
   User.create(
     email:"test_thp_bt#{num}@yopmail.com",

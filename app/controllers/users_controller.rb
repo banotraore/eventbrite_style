@@ -17,7 +17,8 @@ class UsersController < ApplicationController
 
       flash[:danger] = "Please log in to perform this action."
       redirect_to :root
-  
+
     end
   end
+  
 end

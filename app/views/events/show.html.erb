@@ -1,13 +1,7 @@
 <div class="container">
-	<div class="jumbotron bg-secondary">
-		<div class="mx-auto" style="width: 400px;">
-			<h1>Event
-				<%= @event.title %></h1>
-			<h2>host by :
-				<%= @event.admin.first_name %></h2>
 
-		</div>
-	</div>
+
+
 
 	<div class="container text-center">
 		<div class="row border border-dark rounded">
@@ -16,10 +10,48 @@
 					<h5 class="card-title">Description</h5>
 					<p class="card-text"><%= @event.description %></p>
 				</div>
-
 			</div>
 		</div>
 	</div>
+
+	<% if @event.is_free? && (@event.admin != current_user && @event.attendances.include?(current_user.id))  %>
+
+	<p><%= button_to "Join this event", event_attendances_path(@event.id), method: :create ,class: "btn btn-sm btn-danger"  %></p>
+	<% end %>
+
+
+
+	<div class="container text-center">
+		<div class="test_redirection">
+			<% if @event.admin != current_user && !@event.attendances.include?(current_user) %>
+				<p>Je ne suis pas l'admin, à retirer quand tout est ok</p>
+					<h2>test strip form</h2>
+					<%= form_tag event_attendances_path(@event.id) do %>
+						<article>
+							<% if flash[:error].present? %>
+								<div id="error_explanation">
+									<p><%= flash[:error] %></p>
+								</div>
+							<% end %>
+								<label class="amount">
+									<span>Amount: € <%= @event.price.to_f %></span>
+								</label>
+						</article>
+
+							<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+							data-description="Event subscription"
+							data-amount="<%= @event.price*100%>"
+							data-currency="eur"
+							data-locale="auto"></script>
+						<% end %>
+				<% else %>
+					<p>Je suis l'admin de cet event</p>
+						<h5 class="card-title"><a class="text-warning"><%= link_to "attendances" , event_attendances_path(@event.id) %></a></h5>
+				<% end %>
+		</div>
+	</div>
+
 
 	<div class="card-group">
 		<div class="card text-center" style="width: 18rem;">
@@ -105,17 +137,4 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="test_show_attendances">
-		<% @event.attendances.each do | event| %>
-			<ul class="list-group">
-				<li class="list-group-item disabled"><%= event.user.first_name%></li>
-				<li class="list-group-item"><%= event.user.email%></li>
-
-			</ul>
-
-		<% end %>
-		<br>
-
-	</div
 </div>
