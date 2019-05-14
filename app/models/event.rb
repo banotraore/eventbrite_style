@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   has_many :attendances, dependent: :destroy
-  belongs_to :admin, class_name: 'User', foreign_key: 'admin_id', dependent: :destroy
+  belongs_to :admin, class_name: 'User', foreign_key: 'admin_id'
   has_many :users, through: :attendances
   validates :start_date, presence: true
   validate :is_start_date_correct?
@@ -34,5 +34,5 @@ class Event < ApplicationRecord
     price == 0
   end
 
-  
+
 end

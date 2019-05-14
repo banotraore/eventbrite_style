@@ -1,4 +1,6 @@
 <div class="container">
+  <h5 class="card-title"><a class="text-warning"><%= link_to "Edit this event" , edit_event_path(@event.id) %></a></h5>
+
   <div class="test_show_attendances">
     <% if @event.attendances.count == 0 %>
       <a href="https://www.youtube.com/watch?v=FMar1ifzdmk" target="_blank">Nobody</a>

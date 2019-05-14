@@ -1,4 +1,7 @@
 class AttendancesController < ApplicationController
+
+  before_action :authenticate_user, only: [:show ]
+
   def index
     @event = Event.find(params[:event_id])
     @attendance = @event.attendances
@@ -31,7 +34,19 @@ class AttendancesController < ApplicationController
       rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to @event
-    end 
+    end
     end
   end
+
+  def authenticate_user
+    #unless current_user
+      if !user_signed_in? || current_user.id != params[:id].to_i
+
+      flash[:danger] = "Please log in to perform this action."
+      redirect_to :root
+
+    end
+  end
+
+
 end

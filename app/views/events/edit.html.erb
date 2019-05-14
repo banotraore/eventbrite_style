@@ -1,0 +1,41 @@
+<div class="col col-6 mx-auto mt-3 text-dark">
+  <div class="form">
+    <%= form_tag url_for(action: 'update'), method: "patch" do  %>
+
+  <div class="form-group">
+    <%= label :title, "Title" %><br />
+    <%= text_field_tag :title, @event.title, autofocus: true, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label :description, "Description" %><br />
+    <%= text_field_tag :description, @event.description, autofocus: true, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label :duration, "Duration" %><br />
+    <%= text_field_tag :duration, @event.duration, class: "form-control", placeholder: "Duration (mn)"%>
+  </div>
+  <div class="form-group">
+    <%= label :start_date, "Start Date" %><br />
+    <%= select_datetime Time.now, :prefix => 'start_date'  , :minute_step => 5 %>
+  </div>
+  <div class="form-group">
+    <%= label :price, "Price" %><br />
+    <%= text_field_tag 'price', @event.price, class: "form-control", placeholder: "Duration (mn)"%>
+  </div>
+  <div class="form-group">
+    <%= label :location, "Location" %><br />
+    <%= text_field_tag :location, @event.location, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Update" , class: "btn btn-lg btn-primary btn-block"%>
+  </div>
+<% end %>
+</div>
+  <a href="<%= event_path(@event.id)%>" class="btn btn-sm btn-danger" data-method="DELETE">Cancel this event?</a>
+
+
+  <%= link_to "Back", :back %>
+
+
+  </div>
