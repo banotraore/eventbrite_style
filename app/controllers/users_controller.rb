@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     @user = User.all
   end
 
+  def destroy
+    
+  end
   private
 
   def authenticate_user
@@ -20,5 +23,5 @@ class UsersController < ApplicationController
 
     end
   end
-  
+
 end
