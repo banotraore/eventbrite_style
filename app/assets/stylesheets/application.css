@@ -1,10 +1,13 @@
 .footer {
-   position: relative;
-   left: 0;
-   bottom: 0;
-    width: 100vw;
+  width: 100vw;
+  margin-top: 50px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     background-color: #6f5f5c;
-   color: white;
-   text-align: center;
-  text-decoration: none;
+    color: white;
+    text-align: center;
+   text-decoration: none;
 }
