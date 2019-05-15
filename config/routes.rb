@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :events do
    resources :attendances, only: [:create, :index]
+   resources :avatars, only: [:create]
  end
   resources :users, only: [:show, :index, :edit, :update]
   resources :static_pages_secret_index_path , only: [:index]

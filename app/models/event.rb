@@ -10,6 +10,8 @@ class Event < ApplicationRecord
   validates :description, length: { in: 20..1000 }, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0, less_than: 1001 }, presence: true
   validates :location, presence: true
+  has_one_attached :avatar
+
 
   # To calculate the end date
   def end_date

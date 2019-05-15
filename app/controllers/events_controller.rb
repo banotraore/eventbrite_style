@@ -22,10 +22,10 @@ class EventsController < ApplicationController
        admin_id:current_user.id
       )
      if @event.save
-       flash[:success] = "Event added !"
+       flash[:success] = "Event added to our list !"
        redirect_to @event
      else
-       flash[:danger] = "Event not valid !"
+       flash.now[:danger] = "Event not valid , missing parameters!"
        render :new
      end
    end

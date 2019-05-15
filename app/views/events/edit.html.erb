@@ -10,6 +10,7 @@
     <%= label :description, "Description" %><br />
     <%= text_field_tag :description, @event.description, autofocus: true, class: "form-control" %>
   </div>
+
   <div class="form-group">
     <%= label :duration, "Duration" %><br />
     <%= text_field_tag :duration, @event.duration, class: "form-control", placeholder: "Duration (mn)"%>

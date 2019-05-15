@@ -8,7 +8,14 @@
     <div class="card-deck mb-3 text-center">
 
       <div class="card card-accent-dark mb-3" style="max-width: 20rem;">
-       <%= image_tag("test.jpg", :alt => "rss feed") %>
+
+        <%if event.avatar.attached?%>
+      		<%= image_tag event.avatar, alt: 'avatar', alt: 'rss feed' ,size: "299x183"%>
+      	<%else%>
+        <%= image_tag("test.jpg", :alt => "rss feed" , size: "299x183") %>
+
+      <% end %>
+
 
         <div class="card-header">
           Topic : <%= event.title %>
