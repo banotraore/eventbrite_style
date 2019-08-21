@@ -54,7 +54,9 @@ class EventsController < ApplicationController
    end
 
    def destroy
-     @event = Event.find(params[:id])
+    @event.avatar.purge if @event.pictuavatarre.attached?
+	
+    @event = Event.find(params[:id])
     @event.destroy
     redirect_to :root
 
