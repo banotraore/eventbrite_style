@@ -67,5 +67,5 @@ gem 'faker'
 gem 'table_print'
 gem "letter_opener"
 gem 'dotenv-rails'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem "aws-sdk-s3", require: false
